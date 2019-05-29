@@ -44,9 +44,9 @@ locals {
   delimiter                      = var.delimiter != "-" ? var.delimiter : local.delimiter_context_or_default
 
   # Merge attributes
-  attributes = [distinct(
+  attributes = distinct(
     compact(concat(var.attributes, local.context_local["attributes"])),
-  )]
+  )
 
   # Generate tags (don't include tags with empty values)
   generated_tags = zipmap(
